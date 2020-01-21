@@ -1,0 +1,26 @@
+{
+  "name": "marvin",
+  "version": "1.0.0",
+  "description": "Online Mall system",
+  "main": "Marvin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feihu1996x/Marvin.git"
+  },
+  "keywords": [
+    "node",
+    "mall"
+  ],
+  "author": "feihu1996x",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/feihu1996x/Marvin/issues"
+  },
+  "homepage": "https://github.com/feihu1996x/Marvin#readme",
+  "dependencies": {
+    "mongoose": "^5.8.9"
+  }
+}
