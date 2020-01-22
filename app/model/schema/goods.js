@@ -11,7 +11,7 @@ const goodsSchema = new Schema({
         type: String,
         required: true,
     },
-    productFilter: {                          // 商品筛选
+    productFilter: {                    // 商品颜色尺码
         type: [{
             color: {
                 type: String,
@@ -23,6 +23,10 @@ const goodsSchema = new Schema({
             },
             size: {
                 type: [{
+                    productSize: {
+                        type: String,
+                        required: true,
+                    },
                     productWholesalePrice: {
                         type: Number,
                         required: true,
