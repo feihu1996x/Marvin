@@ -5,62 +5,133 @@ const Schema = mongoose.Schema;
 const goodsSchema = new Schema({
     __v: {
         type: Number,
-        select: false,
+        select: true,
     },
-    productName: {
+    productName: {                          // 商品标题
         type: String,
         required: true,
-    },  // 商品标题
-    productNumber: {
+    },
+    productFilter: {                          // 商品筛选
+        type: [{
+            color: {
+                type: String,
+                required: true,
+            },
+            image: {
+                type: String,
+                required: true,
+            },
+            size: {
+                type: [{
+                    productWholesalePrice: {
+                        type: Number,
+                        required: true,
+                    },
+                    productRetailPrice: {
+                        type: Number,
+                        required: true,
+                    },
+                    productStock: {
+                        type: String,
+                        required: true,
+                    },
+                    productNumber: {
+                        type: Number,
+                        required: true,
+                    },
+                    productBarCode: {
+                        type: String,
+                        required: true,
+                    },
+                }],
+                required: true,
+            }
+        }],
+        required: true,
+    },
+    productWholesalePrice: {          // 商品批发价
         type: Number,
-    }, // 商品货号
-    productBarCode: {
+        required: false,
+    },
+    productRetailPrice: {                 // 商品零售价
+        type: Number,
+        required: false,
+    },
+    productStock: {                           // 商品库存
         type: String,
-    }, // 商品条码
-    productWholesalePrice: {
+        required: false,
+    },
+    productNumber: {                       // 商品货号
         type: Number,
-    }, // 商品批发价
-    productRetailPrice: {
-        type: Number,
-    }, // 商品零售价
-    productCustomerRatings: {
+        required: false,
+    },
+    productBarCode: {                      // 商品条码
+        type: String,
+        required: false,
+    },
+    productCustomerRating: {            // 商品评分
         type: Number,
         enum: [
             1, 
             2, 
             3, 
             4, 
-            5
+            5,
         ],
-    }, // 商品评分
-    productOrigin: {
+        required: true,
+    },
+    productOrigin: {                       // 商品发货地
         type: String,
-    }, // 商品发货地
-    productStock: {
-        type: String,
-    }, // 商品库存
-    productSpecification: [{
-        type: String,
-    }], // 商品规格参数
-    productIntroduction: [{
-        description: {
+        required: true,
+    },
+    productSpecifications: {       // 商品规格参数
+        type: [{
             type: String,
-        },
-        images: [{
+            required: true,
+        }],
+        required: true,
+    },
+    productIntroduction: {                // 商品介绍
+        type: [{
+            description: {
+                type: String,
+                required: true,    
+            },
+            images: {
+                type: [{
+                    type: String,
+                    required: true,
+                }],
+                required: true,
+            }
+        }],
+        required: false,
+    },
+    productImages: {                       // 商品实拍
+        type: [{
             type: String,
-        }]
-    }], // 商品介绍
-    productImages: [{
-        type: String,
-    }], // 商品实拍
-    productWeChatMaterials: [{
-        description: {
-            type: String,
-        },
-        images: [{
-            type: String,
-        }]
-    }], // 商品微信素材
+            required: true, 
+        }],
+        required: true,
+    },
+    productWeChatMaterials: {  // 商品微信素材
+        type: [{
+            description: {
+                type: String,
+                required: true,
+            },
+            images: {
+                type: [{
+                    type: String,
+                    require: true,
+                }],
+                required: true,
+            }            
+        }],
+        required: true,
+    },
+}, {
+    timestamps: true,
 });
 
 mongoose.model('Goods', goodsSchema, 'goods');
