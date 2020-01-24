@@ -1,17 +1,18 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
+const Model = mongoose.model;
 
 const goodsSchema = new Schema({
     __v: {
         type: Number,
-        select: true,
+        select: false,
     },
-    productName: {                          // 商品标题
+    productName: {  // 商品标题
         type: String,
         required: true,
     },
-    productFilter: {                    // 商品颜色尺码
+    productFilter: {  // 商品颜色尺码
         type: [{
             color: {
                 type: String,
@@ -53,27 +54,27 @@ const goodsSchema = new Schema({
         }],
         required: true,
     },
-    productWholesalePrice: {          // 商品批发价
+    productWholesalePrice: {  // 商品批发价
         type: Number,
         required: false,
     },
-    productRetailPrice: {                 // 商品零售价
+    productRetailPrice: {  // 商品零售价
         type: Number,
         required: false,
     },
-    productStock: {                           // 商品库存
+    productStock: {  // 商品库存
         type: String,
         required: false,
     },
-    productNumber: {                       // 商品货号
+    productNumber: {  // 商品货号
         type: Number,
         required: false,
     },
-    productBarCode: {                      // 商品条码
+    productBarCode: {  // 商品条码
         type: String,
         required: false,
     },
-    productCustomerRating: {            // 商品评分
+    productCustomerRating: {  // 商品评分
         type: Number,
         enum: [
             1, 
@@ -84,18 +85,18 @@ const goodsSchema = new Schema({
         ],
         required: true,
     },
-    productOrigin: {                       // 商品发货地
+    productOrigin: {  // 商品发货地
         type: String,
         required: true,
     },
-    productSpecifications: {       // 商品规格参数
+    productSpecifications: {  // 商品规格参数
         type: [{
             type: String,
             required: true,
         }],
         required: true,
     },
-    productIntroduction: {                // 商品介绍
+    productIntroduction: {  // 商品介绍
         type: [{
             description: {
                 type: String,
@@ -111,7 +112,7 @@ const goodsSchema = new Schema({
         }],
         required: false,
     },
-    productImages: {                       // 商品实拍
+    productImages: {  // 商品实拍
         type: [{
             type: String,
             required: true, 
@@ -134,8 +135,18 @@ const goodsSchema = new Schema({
         }],
         required: true,
     },
+    functionalitycategory: {  // 功能分类
+        type: Schema.Types.ObjectId,
+        ref: 'FunctionalityCategory',
+        required: true,
+    },
+    BrandCategory: {  // 品牌分类
+        type: Schema.Types.ObjectId,
+        ref: 'BrandCategory',
+        required: true,
+    }
 }, {
     timestamps: true,
 });
 
-mongoose.model('Goods', goodsSchema, 'goods');
+Model('Goods', goodsSchema, 'goods');
