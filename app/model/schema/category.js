@@ -3,20 +3,21 @@ const mongoosse = require('mongoose');
 const Schema = mongoosse.Schema;
 const Model = mongoosse.model;
 
-const functionalityCategorySchema = new Schema({  // 功能分类
+const functionalityCategorySchema = new Schema({
     __v: {
         type: Number,
         select: false,
     },
-    categoryName: {  // 类别名称
+    categoryName: {
+        type: Schema.Types.ObjectId,
+        ref: 'Topic',
+        required: true,
+    },
+    categoryDescription: {
         type: String,
         required: true,
     },
-    categoryDescription: {  // 类别描述
-        type: String,
-        required: true,
-    },
-    rootCategoryId: {  // 上级类别ID
+    rootCategoryId: {
         type: String,
         required: false,
     },
@@ -24,24 +25,27 @@ const functionalityCategorySchema = new Schema({  // 功能分类
     timestamps: true,
 });
 
-const brandCategorySchema = new Schema({  // 品牌分类
+const brandCategorySchema = new Schema({
     __v: {
         type: Number,
         select: true
     },
-    categoryName: {  // 类别名称
+    categoryName: {
+        type: Schema.Types.ObjectId,
+        ref: 'Topic',
+        required: true,
+    },
+    categoryDescription: {
         type: String,
         required: true,
     },
-    categoryDescription: {  // 类别描述
-        type: String,
-        required: true,
-    },
-    rootCategoryId: {  // 上级类别ID
+    rootCategoryId: {
         type: String,
         required: false,
     },
+}, {
+    timestamps: true,
 });
 
-Model('FunctionalityCategory', functionalityCategorySchema, 'functionalityCategory');
-Model('BrandCategory', brandCategorySchema, 'brandCategory');
+Model('FunctionalityCategory', functionalityCategorySchema, 'functionalityCategories');
+Model('BrandCategory', brandCategorySchema, 'brandCategories');

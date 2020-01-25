@@ -8,11 +8,11 @@ const goodsSchema = new Schema({
         type: Number,
         select: false,
     },
-    productName: {  // 商品标题
+    productName: {
         type: String,
         required: true,
     },
-    productFilter: {  // 商品颜色尺码
+    productFilter: {
         type: [{
             color: {
                 type: String,
@@ -54,27 +54,27 @@ const goodsSchema = new Schema({
         }],
         required: true,
     },
-    productWholesalePrice: {  // 商品批发价
+    productWholesalePrice: {
         type: Number,
         required: false,
     },
-    productRetailPrice: {  // 商品零售价
+    productRetailPrice: {
         type: Number,
         required: false,
     },
-    productStock: {  // 商品库存
+    productStock: {
         type: String,
         required: false,
     },
-    productNumber: {  // 商品货号
+    productNumber: {
         type: Number,
         required: false,
     },
-    productBarCode: {  // 商品条码
+    productBarCode: {
         type: String,
         required: false,
     },
-    productCustomerRating: {  // 商品评分
+    productCustomerRating: {
         type: Number,
         enum: [
             1, 
@@ -85,18 +85,18 @@ const goodsSchema = new Schema({
         ],
         required: true,
     },
-    productOrigin: {  // 商品发货地
+    productOrigin: {
         type: String,
         required: true,
     },
-    productSpecifications: {  // 商品规格参数
+    productSpecifications: {
         type: [{
             type: String,
             required: true,
         }],
         required: true,
     },
-    productIntroduction: {  // 商品介绍
+    productIntroduction: {
         type: [{
             description: {
                 type: String,
@@ -112,14 +112,14 @@ const goodsSchema = new Schema({
         }],
         required: false,
     },
-    productImages: {  // 商品实拍
+    productImages: {
         type: [{
             type: String,
             required: true, 
         }],
         required: true,
     },
-    productWeChatMaterials: {  // 商品微信素材
+    productWeChatMaterials: {
         type: [{
             description: {
                 type: String,
@@ -135,16 +135,21 @@ const goodsSchema = new Schema({
         }],
         required: true,
     },
-    functionalitycategory: {  // 功能分类
+    functionalitycategory: {
         type: Schema.Types.ObjectId,
         ref: 'FunctionalityCategory',
         required: true,
     },
-    BrandCategory: {  // 品牌分类
+    brandCategory: {
         type: Schema.Types.ObjectId,
         ref: 'BrandCategory',
         required: true,
-    }
+    },
+    label: {
+        type: Schema.Types.ObjectId,
+        ref: 'Topic',
+        required: true,
+    },
 }, {
     timestamps: true,
 });
