@@ -12,38 +12,49 @@ const commentSchema = new Schema({
         type: String,
         required: true,
     },
+    rating: {
+        type: Number,
+        enum: [
+            1,
+            2,
+            3,
+            4,
+            5,
+        ],
+        required: false,
+    },
     reviewer: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,
         select: false,
     },
-    questionId: {
+    question: {
         type: Schema.Types.ObjectId,
         ref: 'Question',
         required: false,
     },
-    answerId: {
+    answer: {
         type: Schema.Types.ObjectId,
         ref: 'Answer',
         required: false,
     },
-    goodsId: {
+    goods: {
         type: Schema.Types.ObjectId,
         ref: 'Goods',
         required: false,
     },
-    orderId: {
+    order: {
         type: Schema.Types.ObjectId,
         ref: 'OrderId',
         required: false,
     },
-    rootCommentId: {
+    root: {
         type: Schema.Types.ObjectId,
         ref: 'Comment',
         required: false,
     },
-    replyId: {
+    replyUser: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: false,

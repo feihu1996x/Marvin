@@ -8,73 +8,31 @@ const goodsSchema = new Schema({
         type: Number,
         select: false,
     },
-    productName: {
+    name: {
         type: String,
         required: true,
     },
-    productFilter: {
-        type: [{
-            color: {
-                type: String,
-                required: true,
-            },
-            image: {
-                type: String,
-                required: true,
-            },
-            size: {
-                type: [{
-                    productSize: {
-                        type: String,
-                        required: true,
-                    },
-                    productWholesalePrice: {
-                        type: Number,
-                        required: true,
-                    },
-                    productRetailPrice: {
-                        type: Number,
-                        required: true,
-                    },
-                    productStock: {
-                        type: String,
-                        required: true,
-                    },
-                    productNumber: {
-                        type: Number,
-                        required: true,
-                    },
-                    productBarCode: {
-                        type: String,
-                        required: true,
-                    },
-                }],
-                required: true,
-            }
-        }],
-        required: true,
-    },
-    productWholesalePrice: {
+    wholesalePrice: {
         type: Number,
         required: false,
     },
-    productRetailPrice: {
+    retailPrice: {
         type: Number,
         required: false,
     },
-    productStock: {
+    stock: {
         type: String,
         required: false,
     },
-    productNumber: {
+    number: {
         type: Number,
         required: false,
     },
-    productBarCode: {
+    barCode: {
         type: String,
         required: false,
     },
-    productCustomerRating: {
+    customerRating: {
         type: Number,
         enum: [
             1, 
@@ -85,18 +43,18 @@ const goodsSchema = new Schema({
         ],
         required: true,
     },
-    productOrigin: {
+    origin: {
         type: String,
         required: true,
     },
-    productSpecifications: {
+    specifications: {
         type: [{
             type: String,
             required: true,
         }],
         required: true,
     },
-    productIntroduction: {
+    introduction: {
         type: [{
             description: {
                 type: String,
@@ -112,14 +70,14 @@ const goodsSchema = new Schema({
         }],
         required: false,
     },
-    productImages: {
+    images: {
         type: [{
             type: String,
             required: true, 
         }],
         required: true,
     },
-    productWeChatMaterials: {
+    weChatMaterials: {
         type: [{
             description: {
                 type: String,

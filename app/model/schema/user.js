@@ -8,7 +8,7 @@ const userSchema = new Schema({
         type: Number,
         select: false,
     },
-    username: {
+    name: {
         type: String,
         required: true,
     },
@@ -144,39 +144,6 @@ const userSchema = new Schema({
         select: false,
         required: false,
     },
-    addressList: {
-        type: [{
-            province: {
-                type: Schema.Types.ObjectId,
-                ref: 'Topic',
-                required: true,
-            },
-            city: {
-                type: Schema.Types.ObjectId,
-                ref: 'Topic',
-                required: true,
-            },
-            county: {
-                type: Schema.Types.ObjectId,
-                ref: 'Topic',
-                required: true,
-            },
-            detailedAddress: {
-                type: String,
-                required: true,
-            },
-            phoneNumber: {
-                type: Number,
-                required: true,
-            },
-            isDefault: {
-                type: Boolean,
-                required: true,
-            },
-        }],
-        select: false,
-        required: false,
-    }
 }, {
     timestamps: true,
 });

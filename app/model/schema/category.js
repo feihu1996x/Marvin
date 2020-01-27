@@ -8,17 +8,18 @@ const functionalityCategorySchema = new Schema({
         type: Number,
         select: false,
     },
-    categoryName: {
+    name: {
         type: Schema.Types.ObjectId,
         ref: 'Topic',
         required: true,
     },
-    categoryDescription: {
+    description: {
         type: String,
         required: true,
     },
-    rootCategoryId: {
-        type: String,
+    root: {
+        type: Schema.Types.ObjectId,
+        ref: 'FunctionalityCategory',
         required: false,
     },
 }, {
@@ -30,17 +31,18 @@ const brandCategorySchema = new Schema({
         type: Number,
         select: true
     },
-    categoryName: {
+    name: {
         type: Schema.Types.ObjectId,
         ref: 'Topic',
         required: true,
     },
-    categoryDescription: {
+    description: {
         type: String,
         required: true,
     },
-    rootCategoryId: {
-        type: String,
+    root: {
+        type: Schema.Types.ObjectId,
+        ref: 'BrandCategory',
         required: false,
     },
 }, {
